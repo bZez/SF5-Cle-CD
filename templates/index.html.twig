@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Code index{% endblock %}
+
+{% block body %}
+    <div class="container" style="height: 100vh">
+        <div class="row align-items-center h-100">
+            <div class="col-12 col-md-4 offset-md-4 text-center rounded shadow p-5">
+                {% for message in app.flashes('notice') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                <h1 class="h3">Verification des codes</h1>
+                <p class="text-black-50">Pour récupérer votre codee de licence, entrez votre code de coupon
+                    ci-dessous</p>
+                <form action="{{ path('form') }}" name="checker" method="POST">
+                    <label for="code_reduc">Code de sécurité</label>
+                    <input type="text" class="form-control" name="checker[codeSecu]" id="code_reduc" placeholder="Code de vérification N°1">
+                    <label for="code_secu" class="mt-3">Code de bon de réduction</label>
+                    <input type="text" class="form-control" name="checker[codeReduc]" id="code_secu" placeholder="Code de vérification N°2">
+                    <button class="btn btn-success mt-3">VERIFIER</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+//
+    </script>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Code index{% endblock %}
+
+{% block body %}
+    <div class="container" style="height: 100vh">
+        <div class="row align-items-center h-100">
+            <div class="col-12 col-md-6 offset-md-3 text-center rounded shadow p-5">
+                <h1 class="h3">Vos coordonées</h1>
+                <p class="text-black-50">Merci de complétez le formulaire pour obtenir votre clé CD</p>
+                <form action="{{ path('register') }}" name="checker" method="POST">
+                    <div class="form-row">
+                        <div class="col-12 col-md-6">
+                            <label for="infos_lname">Nom</label>
+                            <input type="text" class="form-control" name="infos[lname]" id="infos_lname"
+                                   placeholder="Votre nom...">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="infos_fname">Prénom</label>
+                            <input type="text" class="form-control" name="infos[fname]" id="infos_fname"
+                                   placeholder="Votre prénom...">
+                        </div>
+                    </div>
+                    <label for="infos_email" class="mt-3">Email</label>
+                    <input type="email" class="form-control" name="infos[email]" id="infos_email"
+                           placeholder="Votre email...">
+                    <label for="infos_email" class="mt-3">Adresse</label>
+                    <input type="text" class="form-control" name="infos[address]" id="infos_address"
+                           placeholder="Votre email...">
+                    <div class="form-row mt-3">
+                        <div class="col-12 col-md-6">
+                            <label for="infos_lname">Code postal</label>
+                            <input type="text" class="form-control" name="infos[zipcode]" id="infos_zipcode"
+                                   placeholder="Votre nom...">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="infos_fname">Ville</label>
+                            <input type="text" class="form-control" name="infos[city]" id="infos_city"
+                                   placeholder="Votre prénom...">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success mt-3">OBTENIR MA CLE CD</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        //
+    </script>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Cle{% endblock %}
+
+{% block body %}
+    <div class="container" style="height: 100vh">
+        <div class="row align-items-center h-100">
+            <div class="col-12 col-md-4 offset-md-4 text-center rounded shadow p-5">
+                {% for message in app.flashes('notice') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                <h1 class="h3">Nouvelle clé CD</h1>
+                <form action="{{ path('cle_new') }}" method="POST">
+                    <input type="text" name="cle[cle]" class="form-control" id="cle_cle" placeholder="Clé CD...">
+                    <div class="form-row mt-3" id="rows">
+                        <div class="col-10">
+                            <input type="text" name="cle[codeSecu][]" class="form-control" id="cle_cle" placeholder="Code de sécurité...">
+                        </div>
+                        <div class="col-2">
+                            <span  class="btn btn-primary" id="addRow">+</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success mt-3">Créer</button>
+                </form>
+                {# {{ include('cle/_form.html.twig') }}#}
+
+                <a href="{{ path('cle_index') }}" class="btn btn-danger mt-3">Retour a la liste</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $('#addRow').click(function (e) {
+            e.preventDefault();
+            $('#rows').append('<div class="col-12 mt-3">\n' +
+                '                            <input type="text" name="cle[codeSecu][]" class="form-control" placeholder="Code de sécurité...">\n' +
+                '                        </div>');
+        })
+    </script>
+{% endblock %}

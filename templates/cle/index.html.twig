@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cle index{% endblock %}
+
+{% block body %}
+    <h1>Cle index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cle in cles %}
+            <tr>
+                <td>{{ cle.id }}</td>
+                <td>{{ cle.cle }}</td>
+                <td>
+                    <a href="{{ path('cle_show', {'id': cle.id}) }}">show</a>
+                    <a href="{{ path('cle_edit', {'id': cle.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cle_new') }}">Create new</a>
+{% endblock %}
